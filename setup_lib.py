@@ -30,7 +30,7 @@ def copy_configs():
 	os.system('mv /usr/lib/raspiwifi/reset_device/static_files/raspiwifi.conf /etc/raspiwifi')
 	os.system('touch /etc/raspiwifi/host_mode')
 
-def update_main_config_file(entered_ssid, auto_config_choice, auto_config_delay, ssl_enabled_choice, server_port_choice):
+def update_main_config_file(entered_ssid, auto_config_choice, auto_config_delay, ssl_enabled_choice, server_port_choice, redirect_url):
 	if entered_ssid != "":
 		os.system('sed -i \'s/RaspiWiFi Setup/' + entered_ssid + '/\' /etc/raspiwifi/raspiwifi.conf')
 	if auto_config_choice.lower() == "y":
@@ -41,3 +41,5 @@ def update_main_config_file(entered_ssid, auto_config_choice, auto_config_delay,
 		os.system('sed -i \'s/ssl_enabled=0/ssl_enabled=1/\' /etc/raspiwifi/raspiwifi.conf')
 	if server_port_choice != "":
 		os.system('sed -i \'s/server_port=80/server_port=' + server_port_choice + '/\' /etc/raspiwifi/raspiwifi.conf')
+	if redirect_url != "":
+		os.system('sed -i \'s/redirect_url=/redirect_url=' + redirect_url + '/\' /etc/raspiwifi/raspiwifi.conf')

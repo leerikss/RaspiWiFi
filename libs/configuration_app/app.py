@@ -35,7 +35,7 @@ def save_credentials():
     t = Thread(target=sleep_and_start_ap)
     t.start()
 
-    return render_template('save_credentials.html', ssid = ssid)
+    return render_template('save_credentials.html', ssid = ssid, redirect_url = config_hash['redirect_url'])
 
 
 
